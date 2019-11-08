@@ -1,7 +1,19 @@
 import sys
-import hash_functions
+from hash_tables_shla9937 import hash_functions
 import time
 import random
+
+
+def h_rolling(key, N, p=53, m=2**64):
+    if isinstance(key, str):
+        s = 0
+        for i in range(len(key)):
+            s += ord(key[i]) * p**i
+        s = s % m
+        return s % N
+    else:
+        print('Input not str.')
+        return -1
 
 
 def reservoir_sampling(new_val, size, V):
